@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam's Dog Daycare – Exeter</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Exo:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Rasa:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────── */
+    :root {
+      --mint:    #95D9C3;
+      --slate:   #5C6F68;
+      --aqua:    #A7FFF6;
+      --dark:    #1e2b28;
+      --white:   #f9fefb;
+      --warn-bg: #fff8e1;
+      --warn-bdr:#e6a817;
+      --warn-txt:#6b4600;
+    }
+
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Rasa', Georgia, serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── DISCLAIMER BANNER ──────────────────────────── */
+    .disclaimer {
+      background: var(--warn-bg);
+      border-bottom: 4px solid var(--warn-bdr);
+      color: var(--warn-txt);
+      text-align: center;
+      padding: 14px 24px;
+      font-family: 'Exo', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.5;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .disclaimer strong {
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 2px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ─── HEADER / NAV ───────────────────────────────── */
+    header {
+      background: var(--slate);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo {
+      font-family: 'Days One', sans-serif;
+      font-size: 1.6rem;
+      color: var(--aqua);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--mint); }
+
+    nav a {
+      font-family: 'Exo', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 28px;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    nav a:hover { opacity: 1; color: var(--aqua); }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 80px 48px;
+    }
+
+    /* Animated blob background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 70% 40%, rgba(149,217,195,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(92,111,104,0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 80% 40% at 50% 10%, rgba(167,255,246,0.08) 0%, transparent 70%),
+        var(--dark);
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+    .blob1 { width: 520px; height: 520px; background: var(--mint);  top: -120px; right: -80px; animation-duration: 14s; }
+    .blob2 { width: 340px; height: 340px; background: var(--aqua);  bottom: -60px; left: 10%;  animation-duration: 10s; animation-delay: -4s; }
+    .blob3 { width: 260px; height: 260px; background: var(--slate); top: 30%;    right: 30%;  animation-duration: 16s; animation-delay: -8s; }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, -40px) scale(1.08); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .hero-eyebrow {
+      font-family: 'Exo', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--aqua);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s forwards;
+    }
+    .hero h1 {
+      font-family: 'Days One', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.25s forwards;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--aqua);
+    }
+    .hero-marketing {
+      font-family: 'Rasa', serif;
+      font-size: 1.22rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--mint);
+      background: rgba(92,111,104,0.35);
+      border-left: 4px solid var(--aqua);
+      padding: 20px 24px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s forwards;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.55s forwards;
+    }
+    .btn {
+      font-family: 'Exo', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+    .btn-primary { background: var(--aqua); color: var(--dark); }
+    .btn-outline { border: 2px solid var(--mint); color: var(--mint); }
+    .btn-outline:hover { background: var(--mint); color: var(--dark); }
+
+    /* Paw prints decoration */
+    .paw-trail {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      opacity: 0;
+      animation: fadeIn 1.2s 0.8s forwards;
+    }
+    .paw-trail i {
+      font-size: 2.2rem;
+      color: var(--mint);
+      opacity: 0.15;
+      transform: rotate(-15deg);
+    }
+    .paw-trail i:nth-child(even) { transform: rotate(15deg) translateX(24px); opacity: 0.1; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ─── SECTION GENERIC ────────────────────────────── */
+    section { padding: 90px 48px; }
+    .section-label {
+      font-family: 'Exo', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--aqua);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Days One', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .section-sub {
+      font-family: 'Rasa', serif;
+      font-size: 1.1rem;
+      color: var(--mint);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 56px;
+    }
+
+    /* ─── SERVICES ───────────────────────────────────── */
+    .services { background: #162320; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+    .card {
+      background: rgba(92,111,104,0.2);
+      border: 1px solid rgba(149,217,195,0.18);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--aqua);
+      background: rgba(92,111,104,0.38);
+    }
+    .card-icon {
+      width: 54px; height: 54px;
+      background: var(--mint);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      font-family: 'Days One', sans-serif;
+      font-size: 1.1rem;
+      color: var(--aqua);
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-family: 'Rasa', serif;
+      font-size: 1rem;
+      color: rgba(249,254,251,0.75);
+      line-height: 1.6;
+    }
+
+    /* ─── TECH STRIP ─────────────────────────────────── */
+    .tech-strip {
+      background: var(--slate);
+      padding: 60px 48px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .tech-strip-text { flex: 1; min-width: 280px; }
+    .tech-strip-text .section-label { color: var(--aqua); }
+    .tech-strip-text h2 {
+      font-family: 'Days One', sans-serif;
+      font-size: 1.9rem;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .tech-strip-text p {
+      font-family: 'Rasa', serif;
+      font-size: 1.08rem;
+      color: var(--mint);
+      line-height: 1.7;
+    }
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .badge {
+      background: rgba(167,255,246,0.12);
+      border: 1px solid rgba(167,255,246,0.3);
+      color: var(--aqua);
+      font-family: 'Exo', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 50px;
+    }
+
+    /* ─── SOCIAL ─────────────────────────────────────── */
+    .social-section { background: #162320; text-align: center; }
+    .social-section .section-title { margin-bottom: 8px; }
+    .social-section .section-sub { margin: 0 auto 48px; }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .social-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 36px 44px;
+      border-radius: 24px;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 24px;
+    }
+    .social-card:hover { transform: translateY(-10px); }
+    .social-card:hover::before { opacity: 1; }
+
+    .social-card.facebook { background: rgba(24,119,242,0.15); border: 2px solid rgba(24,119,242,0.35); }
+    .social-card.facebook::before { background: rgba(24,119,242,0.1); }
+    .social-card.facebook i { color: #4f9ef8; }
+    .social-card.facebook:hover { box-shadow: 0 20px 50px rgba(24,119,242,0.3); }
+
+    .social-card.instagram { background: rgba(225,48,108,0.12); border: 2px solid rgba(225,48,108,0.3); }
+    .social-card.instagram::before { background: rgba(225,48,108,0.1); }
+    .social-card.instagram i { color: #f06292; }
+    .social-card.instagram:hover { box-shadow: 0 20px 50px rgba(225,48,108,0.3); }
+
+    .social-card.tiktok { background: rgba(0,242,234,0.1); border: 2px solid rgba(0,242,234,0.25); }
+    .social-card.tiktok::before { background: rgba(0,242,234,0.08); }
+    .social-card.tiktok i { color: #69f0ec; }
+    .social-card.tiktok:hover { box-shadow: 0 20px 50px rgba(0,242,234,0.25); }
+
+    .social-card i { font-size: 2.8rem; position: relative; z-index: 1; }
+    .social-card span {
+      font-family: 'Exo', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(249,254,251,0.7);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(149,217,195,0.15);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Days One', sans-serif;
+      font-size: 1.1rem;
+      color: var(--aqua);
+    }
+    .footer-logo span { color: var(--mint); }
+    .footer-note {
+      font-family: 'Rasa', serif;
+      font-size: 0.85rem;
+      color: rgba(149,217,195,0.45);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 700px) {
+      header { padding: 16px 24px; }
+      .hero { padding: 60px 24px; min-height: auto; padding-top: 80px; }
+      .paw-trail { display: none; }
+      section { padding: 60px 24px; }
+      .tech-strip { padding: 48px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      nav a { margin-left: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── DISCLAIMER ───────────────────────────────────── -->
+  <div class="disclaimer" role="banner" aria-label="Project disclaimer">
+    <strong>⚠️ This is NOT a real business</strong>
+    This website is a BTEC I.T. student project demonstrating the use of social media in business. Adam's Dog Daycare does not exist and no services are offered.
+  </div>
+
+  <!-- ── HEADER ────────────────────────────────────────── -->
+  <header>
+    <a href="#" class="logo">Adam's<span> Dog Daycare</span></a>
+    <nav aria-label="Primary navigation">
+      <a href="#services">Services</a>
+      <a href="#tech">Tech</a>
+      <a href="#social">Follow Us</a>
+      <a href="#contact" class="btn btn-primary" style="padding:10px 22px;font-size:0.8rem;">Book Now</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO ──────────────────────────────────────────── -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg"></div>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Exeter's Favourite Dog Daycare</p>
+      <h1 id="hero-heading">Happy dogs,<br /><em>happy you.</em></h1>
+      <blockquote class="hero-marketing">
+        "Adam's Dog Daycare fits lightweight web cameras and speakers to your dog's collar so you can be right here with them all day, cheering them on as they play fetch, snooze in the shade, or sniff other dogs!"
+      </blockquote>
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-primary">Explore Services</a>
+        <a href="#social" class="btn btn-outline">Follow Us</a>
+      </div>
+    </div>
+
+    <div class="paw-trail" aria-hidden="true">
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ──────────────────────────────────────── -->
+  <section class="services" id="services" aria-labelledby="services-heading">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title" id="services-heading">Tailored care for every tail</h2>
+    <p class="section-sub">From morning drop-offs to afternoon adventures around Exeter, every dog leaves tired, loved, and ready to snooze.</p>
+
+    <div class="services-grid">
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i></div>
+        <h3>Daily Dog Walking</h3>
+        <p>Group and solo walks across Exeter's parks, riverside paths, and open fields — rain or shine.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-house-chimney-heart"></i></div>
+        <h3>Full-Day Daycare</h3>
+        <p>Drop your dog off in the morning and collect a blissfully exhausted, well-socialised companion in the evening.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
+        <h3>Live Collar Cam</h3>
+        <p>Watch and chat with your dog all day through our unique collar-mounted camera and speaker system.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-moon"></i></div>
+        <h3>Overnight Boarding</h3>
+        <p>Home comforts and plenty of cuddles for dogs who need to stay the night while you're away.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TECH STRIP ─────────────────────────────────────── -->
+  <div class="tech-strip" id="tech">
+    <div class="tech-strip-text">
+      <p class="section-label">Our Technology</p>
+      <h2>Always connected to your dog</h2>
+      <p>Our bespoke collar hardware streams live HD video and two-way audio directly to our app — so you can watch, talk, and even blow a kiss to your dog from your desk in real time.</p>
+    </div>
+    <div class="tech-badges">
+      <span class="badge"><i class="fa-solid fa-video"></i> &nbsp;Live HD Camera</span>
+      <span class="badge"><i class="fa-solid fa-microphone"></i> &nbsp;Two-Way Audio</span>
+      <span class="badge"><i class="fa-solid fa-mobile-screen"></i> &nbsp;Mobile App</span>
+      <span class="badge"><i class="fa-solid fa-location-dot"></i> &nbsp;GPS Tracking</span>
+      <span class="badge"><i class="fa-solid fa-battery-full"></i> &nbsp;All-Day Battery</span>
+    </div>
+  </div>
+
+  <!-- ── SOCIAL ─────────────────────────────────────────── -->
+  <section class="social-section" id="social" aria-labelledby="social-heading">
+    <p class="section-label">Find Us Online</p>
+    <h2 class="section-title" id="social-heading">Follow the pack</h2>
+    <p class="section-sub">Daily videos, paw-some updates, and enough puppy content to get you through any Monday.</p>
+
+    <div class="social-links">
+      <a href="https://site.com/@dogwalker" class="social-card facebook" target="_blank" rel="noopener" aria-label="Facebook – @dogwalker">
+        <i class="fa-brands fa-facebook"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="https://site.com/@dogwalker" class="social-card instagram" target="_blank" rel="noopener" aria-label="Instagram – @dogwalker">
+        <i class="fa-brands fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+      <a href="https://site.com/@dogwalker" class="social-card tiktok" target="_blank" rel="noopener" aria-label="TikTok – @dogwalker">
+        <i class="fa-brands fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer id="contact">
+    <div class="footer-logo">Adam's<span> Dog Daycare</span></div>
+    <p class="footer-note">Exeter, Devon · <em>BTEC I.T. Unit — Using Social Media in Business · Not a real company</em></p>
+  </footer>
+
+</body>
+</html>
