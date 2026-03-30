@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Adam's Dog Daycare</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Exo:wght@400;700;900&family=Rasa:wght@600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --mint: #95D9C3;
+            --dark-slate: #5C6F68;
+            --cyan: #A7FFF6;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo', sans-serif;
+            background: linear-gradient(135deg, var(--mint) 0%, var(--cyan) 50%, var(--mint) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background paw prints */
+        .paw-print {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            animation: float-paw 8s infinite ease-in-out;
+            color: var(--dark-slate);
+        }
+
+        .paw-print:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .paw-print:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .paw-print:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .paw-print:nth-child(4) { top: 60%; right: 10%; animation-delay: 3s; }
+        .paw-print:nth-child(5) { bottom: 10%; left: 40%; animation-delay: 4s; }
+        .paw-print:nth-child(6) { top: 40%; left: 5%; animation-delay: 5s; }
+
+        @keyframes float-paw {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-30px) rotate(10deg); opacity: 0.2; }
+        }
+
+        /* Main container */
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        /* The confused dog animation */
+        .dog-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+        }
+
+        .dog-head {
+            font-size: 8rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: confused-tilt 3s infinite ease-in-out;
+            filter: drop-shadow(0 10px 20px rgba(92, 111, 104, 0.3));
+        }
+
+        @keyframes confused-tilt {
+            0%, 100% { transform: translate(-50%, -50%) rotate(-5deg); }
+            25% { transform: translate(-50%, -50%) rotate(5deg) scale(1.05); }
+            50% { transform: translate(-50%, -50%) rotate(-3deg); }
+            75% { transform: translate(-50%, -50%) rotate(3deg); }
+        }
+
+        /* Question marks floating around dog */
+        .question-mark {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--dark-slate);
+            font-weight: 900;
+            animation: pop-question 2s infinite ease-in-out;
+        }
+
+        .question-mark:nth-child(2) { top: 0; left: 20%; animation-delay: 0s; }
+        .question-mark:nth-child(3) { top: 10%; right: 20%; animation-delay: 0.5s; }
+        .question-mark:nth-child(4) { bottom: 20%; left: 10%; animation-delay: 1s; }
+        .question-mark:nth-child(5) { bottom: 10%; right: 10%; animation-delay: 1.5s; }
+
+        @keyframes pop-question {
+            0%, 100% { transform: scale(0) rotate(-20deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(20deg); opacity: 1; }
+        }
+
+        /* 404 Text */
+        .error-code {
+            font-family: 'Days One', sans-serif;
+            font-size: 8rem;
+            color: var(--dark-slate);
+            text-shadow: 
+                4px 4px 0px var(--white),
+                8px 8px 0px rgba(92, 111, 104, 0.2);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            animation: bounce-in 1s ease-out;
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Funny message */
+        .error-message {
+            font-family: 'Rasa', serif;
+            font-size: 2rem;
+            color: var(--dark-slate);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .error-subtitle {
+            font-family: 'Exo', sans-serif;
+            font-size: 1.2rem;
+            color: var(--dark-slate);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Dog puns rotating */
+        .pun-container {
+            background: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(92, 111, 104, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pun-text {
+            font-family: 'Exo', sans-serif;
+            font-weight: 700;
+            color: var(--dark-slate);
+            font-size: 1.1rem;
+            animation: fade-pun 8s infinite;
+        }
+
+        .pun-text:nth-child(2) { animation-delay: 2s; position: absolute; top: 1rem; left: 0; right: 0; opacity: 0; }
+        .pun-text:nth-child(3) { animation-delay: 4s; position: absolute; top: 1rem; left: 0; right: 0; opacity: 0; }
+        .pun-text:nth-child(4) { animation-delay: 6s; position: absolute; top: 1rem; left: 0; right: 0; opacity: 0; }
+
+        @keyframes fade-pun {
+            0%, 20% { opacity: 1; }
+            25%, 95% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Exo', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--dark-slate);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(92, 111, 104, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(92, 111, 104, 0.5);
+            background: var(--white);
+            color: var(--dark-slate);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--dark-slate);
+            border: 3px solid var(--dark-slate);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: var(--dark-slate);
+            color: var(--white);
+        }
+
+        /* Wagging tail decoration */
+        .tail {
+            position: fixed;
+            bottom: -50px;
+            right: 10%;
+            font-size: 5rem;
+            animation: wag 0.5s infinite alternate ease-in-out;
+            transform-origin: bottom center;
+            opacity: 0.3;
+            z-index: 5;
+        }
+
+        @keyframes wag {
+            from { transform: rotate(-20deg); }
+            to { transform: rotate(20deg); }
+        }
+
+        /* Treat counter game */
+        .treat-game {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .treat-game h3 {
+            font-family: 'Days One', sans-serif;
+            color: var(--dark-slate);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .treat-btn {
+            background: none;
+            border: none;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.1s;
+            filter: grayscale(100%);
+        }
+
+        .treat-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .treat-btn.collected {
+            filter: grayscale(0%);
+            animation: munch 0.5s ease;
+        }
+
+        @keyframes munch {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(0.8) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .treat-count {
+            font-family: 'Exo', sans-serif;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            .error-message {
+                font-size: 1.5rem;
+            }
+            .dog-head {
+                font-size: 6rem;
+            }
+        }
+
+        /* Confetti for treat collection */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--mint);
+            animation: confetti-fall 3s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background paw prints -->
+    <div class="paw-print"><i class="fas fa-paw"></i></div>
+    <div class="paw-print"><i class="fas fa-paw"></i></div>
+    <div class="paw-print"><i class="fas fa-paw"></i></div>
+    <div class="paw-print"><i class="fas fa-paw"></i></div>
+    <div class="paw-print"><i class="fas fa-paw"></i></div>
+    <div class="paw-print"><i class="fas fa-paw"></i></div>
+
+    <!-- Wagging tail -->
+    <div class="tail">🦴</div>
+
+    <div class="container">
+        <!-- Confused dog animation -->
+        <div class="dog-container">
+            <div class="dog-head">🐕</div>
+            <div class="question-mark">?</div>
+            <div class="question-mark">?</div>
+            <div class="question-mark">?</div>
+            <div class="question-mark">?</div>
+        </div>
+
+        <!-- 404 Code -->
+        <h1 class="error-code">404</h1>
+
+        <!-- Messages -->
+        <h2 class="error-message">Oh no! This page ran away!</h2>
+        <p class="error-subtitle">
+            We sniffed everywhere but couldn't find what you're looking for. 
+            Maybe the dog ate it? 🐕‍🦺
+        </p>
+
+        <!-- Rotating puns -->
+        <div class="pun-container">
+            <div class="pun-text">"Looks like this page is having a ruff day!"</div>
+            <div class="pun-text">"The page has gone to the dog park..."</div>
+            <div class="pun-text">"This URL is barking up the wrong tree!"</div>
+            <div class="pun-text">"Page not found - must be chasing squirrels!"</div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+            <a href="/" class="btn btn-primary">
+                <i class="fas fa-home"></i>
+                Back to Safety
+            </a>
+            <a href="https://site.com/@dogwalker" target="_blank" class="btn btn-secondary">
+                <i class="fas fa-bone"></i>
+                Call for Help
+            </a>
+        </div>
+
+        <!-- Interactive treat game -->
+        <div class="treat-game">
+            <h3><i class="fas fa-cookie-bite"></i> Console the Sad Dog</h3>
+            <p style="font-size: 0.9rem; color: var(--dark-slate); margin-bottom: 1rem;">
+                Click the treats to cheer up our 404 pup!
+            </p>
+            <div id="treats">
+                <button class="treat-btn" onclick="collectTreat(this)">🦴</button>
+                <button class="treat-btn" onclick="collectTreat(this)">🥓</button>
+                <button class="treat-btn" onclick="collectTreat(this)">🍖</button>
+                <button class="treat-btn" onclick="collectTreat(this)">🧀</button>
+                <button class="treat-btn" onclick="collectTreat(this)">🥜</button>
+            </div>
+            <div class="treat-count">
+                Treats given: <span id="count">0</span>/5 | Happiness: <span id="happiness">Sad pup 😢</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let treatCount = 0;
+        const happinessLevels = [
+            "Sad pup 😢",
+            "Curious pup 🤔",
+            "Interested pup 👀",
+            "Happy pup 😊",
+            "Excited pup 😃",
+            "Ecstatic pup! 🎉🐕"
+        ];
+
+        function collectTreat(btn) {
+            if (!btn.classList.contains('collected')) {
+                btn.classList.add('collected');
+                treatCount++;
+                document.getElementById('count').textContent = treatCount;
+                document.getElementById('happiness').textContent = happinessLevels[treatCount];
+                
+                // Create confetti
+                for (let i = 0; i < 10; i++) {
+                    createConfetti();
+                }
+
+                // Change dog emoji when all treats collected
+                if (treatCount === 5) {
+                    setTimeout(() => {
+                        document.querySelector('.dog-head').textContent = '🐕‍🦺';
+                        document.querySelector('.error-message').textContent = 'You found the page! Just kidding, but thanks for the treats! 🎉';
+                    }, 500);
+                }
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = ['#95D9C3', '#5C6F68', '#A7FFF6', '#FFD93D', '#FF6B6B'][Math.floor(Math.random() * 5)];
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 4000);
+        }
+
+        // Random bark on click anywhere (subtle easter egg)
+        let barkCount = 0;
+        const barks = ["Woof!", "Bark!", "Arf!", "Yip!", "Ruff!"];
+        
+        document.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
+                barkCount++;
+                if (barkCount % 5 === 0) {
+                    const bark = document.createElement('div');
+                    bark.textContent = barks[Math.floor(Math.random() * barks.length)];
+                    bark.style.cssText = `
+                        position: fixed;
+                        left: ${e.clientX}px;
+                        top: ${e.clientY}px;
+                        font-family: 'Days One', sans-serif;
+                        font-size: 1.5rem;
+                        color: var(--dark-slate);
+                        pointer-events: none;
+                        animation: bark-float 1s ease-out forwards;
+                        z-index: 1000;
+                    `;
+                    document.body.appendChild(bark);
+                    setTimeout(() => bark.remove(), 1000);
+                }
+            }
+        });
+
+        // Add bark animation style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bark-float {
+                0% { transform: translateY(0) scale(0); opacity: 0; }
+                50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+                100% { transform: translateY(-60px) scale(1); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
