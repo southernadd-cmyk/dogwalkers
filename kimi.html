@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam's Dog Daycare | Exeter</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Exo:wght@300;400;600;700&family=Rasa:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --mint: #95D9C3;
+            --dark-slate: #5C6F68;
+            --cyan: #A7FFF6;
+            --white: #FFFFFF;
+            --light-bg: #F0FDF9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-slate);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Educational Notice Banner */
+        .edu-banner {
+            background: linear-gradient(135deg, var(--dark-slate) 0%, #4a5a54 100%);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Exo', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1000;
+            border-bottom: 4px solid var(--cyan);
+        }
+
+        .edu-banner i {
+            color: var(--cyan);
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(92, 111, 104, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Days One', sans-serif;
+            font-size: 1.8rem;
+            color: var(--dark-slate);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--mint);
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--mint);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--mint);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--mint) 0%, var(--cyan) 100%);
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🐕';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: -2rem;
+            right: -2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '🦴';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            bottom: 2rem;
+            left: 5%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Days One', sans-serif;
+            font-size: 3.5rem;
+            color: var(--dark-slate);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-family: 'Rasa', serif;
+            font-size: 1.5rem;
+            color: var(--dark-slate);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--dark-slate);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(92, 111, 104, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(92, 111, 104, 0.4);
+            background: var(--white);
+            color: var(--dark-slate);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Days One', sans-serif;
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-slate);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--mint), var(--cyan));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--mint);
+            box-shadow: 0 10px 30px rgba(149, 217, 195, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--mint);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Days One', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dark-slate);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-family: 'Rasa', serif;
+            font-size: 1.1rem;
+            color: var(--dark-slate);
+            opacity: 0.9;
+        }
+
+        /* Marketing Message Section */
+        .marketing-section {
+            background: var(--dark-slate);
+            padding: 5rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marketing-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(167, 255, 246, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .marketing-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .marketing-section h2 {
+            font-family: 'Days One', sans-serif;
+            color: var(--cyan);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .marketing-text {
+            font-family: 'Rasa', serif;
+            font-size: 1.4rem;
+            color: var(--white);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .tech-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(149, 217, 195, 0.2);
+            color: var(--cyan);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--mint);
+        }
+
+        /* Social Media Section */
+        .social-section {
+            padding: 4rem 5%;
+            background: linear-gradient(180deg, var(--light-bg) 0%, var(--mint) 100%);
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-family: 'Days One', sans-serif;
+            color: var(--dark-slate);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(92, 111, 104, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--mint), var(--cyan));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(92, 111, 104, 0.3);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link:hover i {
+            color: var(--white);
+        }
+
+        .social-link.facebook { color: #1877F2; }
+        .social-link.instagram { 
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .social-link.tiktok { color: #000000; }
+
+        .social-link.instagram {
+            background: var(--white);
+        }
+        
+        .social-link.instagram i {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-link.instagram:hover i {
+            background: none;
+            -webkit-text-fill-color: var(--white);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-slate);
+            color: var(--white);
+            padding: 2rem 5%;
+            text-align: center;
+            font-family: 'Exo', sans-serif;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Days One', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--mint);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .edu-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.85rem;
+            color: var(--cyan);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Educational Notice Banner -->
+    <div class="edu-banner">
+        <i class="fas fa-graduation-cap"></i>
+        <strong>Educational Project Notice:</strong> This is NOT a real business. This website is a BTEC I.T. project on "Using Social Media in Business"
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fas fa-paw"></i>
+            Adam's Dog Daycare
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Services</a></li>
+            <li><a href="#tech">Our Tech</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Adam's Dog Daycare</h1>
+        <p class="hero-subtitle">Exeter's premier dog walking and daycare service with a technological twist!</p>
+        <a href="#tech" class="cta-button">Discover How It Works</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title fade-in">Why Choose Us?</h2>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-walking"></i>
+                </div>
+                <h3>Professional Dog Walking</h3>
+                <p>Experienced handlers taking your furry friends on adventures across Exeter's beautiful parks and trails.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Daycare Services</h3>
+                <p>A safe, stimulating environment where your dog can socialize, play, and relax while you're at work.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Live Connection</h3>
+                <p>Stay connected with your pet throughout the day with our innovative collar camera technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Message Section -->
+    <section class="marketing-section" id="tech">
+        <div class="marketing-content fade-in">
+            <h2><i class="fas fa-broadcast-tower"></i> Never Miss a Moment</h2>
+            <p class="marketing-text">
+                "Adam's Dog Daycare fits lightweight web cameras and speakers to your dog's collar so you can be right here with them all day, cheering them on as they play fetch, snooze in the shade, or sniff other dogs!"
+            </p>
+            <div class="tech-badges">
+                <span class="badge"><i class="fas fa-wifi"></i> Live Streaming</span>
+                <span class="badge"><i class="fas fa-volume-up"></i> Two-Way Audio</span>
+                <span class="badge"><i class="fas fa-mobile-alt"></i> Mobile App</span>
+                <span class="badge"><i class="fas fa-battery-full"></i> All-Day Battery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section" id="contact">
+        <h2 class="fade-in">Follow Our Pack</h2>
+        <p class="fade-in" style="font-family: 'Rasa', serif; font-size: 1.2rem; color: var(--dark-slate); max-width: 600px; margin: 0 auto;">
+            Join our community on social media to see daily adventures, cute dog photos, and updates from Exeter's happiest hounds!
+        </p>
+        <div class="social-links fade-in">
+            <a href="https://site.com/@dogwalker" target="_blank" class="social-link facebook" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://site.com/@dogwalker" target="_blank" class="social-link instagram" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://site.com/@dogwalker" target="_blank" class="social-link tiktok" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-paw"></i> Adam's Dog Daycare
+            </div>
+            <p class="footer-text">
+                Serving Exeter and surrounding areas with love, care, and cutting-edge pet technology.
+            </p>
+            <div class="edu-footer">
+                <i class="fas fa-info-circle"></i> This website was created as part of a BTEC I.T. assignment on "Using Social Media in Business" and does not represent a real company.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
