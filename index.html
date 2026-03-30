@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam's Dog Daycare | Exeter</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Days+One&family=Exo:wght@400;600;700&family=Rasa:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8VV9l8R+6C8P6+6F5N4R5M9C2A7nU2Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --mint: #95D9C3;
+      --slate: #5C6F68;
+      --aqua: #A7FFF6;
+      --white: #f8fffd;
+      --dark: #2f3a36;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Exo', sans-serif;
+      background: linear-gradient(180deg, var(--white) 0%, #e9fffb 100%);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .notice-bar {
+      background: var(--slate);
+      color: white;
+      text-align: center;
+      padding: 14px 18px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: 0.3px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--mint), var(--aqua));
+      padding: 24px 20px 70px;
+      border-bottom: 4px solid var(--slate);
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-family: 'Days One', sans-serif;
+      font-size: 1.8rem;
+      color: var(--slate);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--slate);
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-family: 'Days One', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: var(--slate);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-text p.lead {
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin-bottom: 22px;
+    }
+
+    .hero-text p.marketing {
+      font-family: 'Rasa', serif;
+      font-size: 1.3rem;
+      background: rgba(255, 255, 255, 0.7);
+      border-left: 6px solid var(--slate);
+      padding: 18px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(92, 111, 104, 0.12);
+      margin-bottom: 24px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--slate);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--slate);
+      border-color: var(--slate);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 2px solid rgba(92, 111, 104, 0.18);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 18px 40px rgba(92, 111, 104, 0.15);
+    }
+
+    .hero-card h2 {
+      font-family: 'Days One', sans-serif;
+      font-size: 1.4rem;
+      color: var(--slate);
+      margin-bottom: 14px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+    }
+
+    .hero-card li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(92, 111, 104, 0.15);
+      font-weight: 600;
+    }
+
+    .hero-card li:last-child {
+      border-bottom: none;
+    }
+
+    main {
+      padding: 60px 0;
+    }
+
+    .section {
+      margin-bottom: 42px;
+    }
+
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 16px 38px rgba(92, 111, 104, 0.08);
+      border: 1px solid rgba(92, 111, 104, 0.08);
+    }
+
+    .section-card h2 {
+      font-family: 'Days One', sans-serif;
+      color: var(--slate);
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+
+    .section-card p {
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .pill {
+      background: var(--mint);
+      color: var(--dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .socials {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      background: var(--aqua);
+      color: var(--slate);
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 2px solid transparent;
+    }
+
+    .social-link i {
+      font-size: 1.2rem;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      background: var(--mint);
+      border-color: var(--slate);
+    }
+
+    footer {
+      background: var(--slate);
+      color: white;
+      text-align: center;
+      padding: 26px 20px;
+      margin-top: 30px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        margin-bottom: 30px;
+      }
+
+      .hero-card {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-text p.marketing {
+        font-size: 1.12rem;
+      }
+
+      .section-card,
+      .hero-card {
+        padding: 22px;
+      }
+
+      .logo {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="notice-bar">
+    This is not a real business. It is a BTEC I.T. project about Using Social Media in Business.
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Adam's Dog Daycare</a>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#social">Social Media</a>
+          <a href="#project">Project Info</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-text reveal">
+          <h1>Happy walks, playful pups, Exeter charm.</h1>
+          <p class="lead">
+            Welcome to Adam's Dog Daycare, a cheerful sample website for a fictional dog walking and daycare company based in Exeter.
+          </p>
+
+          <p class="marketing">
+            "Adam's Dog Daycare fits lightweight web cameras and speakers to your dog's collar so you can be right here with them all day, cheering them on as they play fetch, snooze in the shade, or sniff other dogs!"
+          </p>
+
+          <div class="cta-row">
+            <a href="#social" class="btn btn-primary">Visit Social Pages</a>
+            <a href="#project" class="btn btn-secondary">See Project Note</a>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal">
+          <h2>Why owners would love it</h2>
+          <ul>
+            <li>Friendly Exeter-based dog care branding</li>
+            <li>Clear social media presence</li>
+            <li>Fun, modern, approachable design</li>
+            <li>Strong promotional message for pet owners</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="section">
+        <div class="section-card reveal" id="about">
+          <h2>About the idea</h2>
+          <p>
+            This example website presents a fictional local dog walking and daycare company. It is designed to show how a business could use branding, messaging and social media links to promote its services online.
+          </p>
+          <p>
+            The colour palette gives the page a calm, playful and pet-friendly feel, while the headings and typography aim to make the site feel welcoming and memorable.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Exeter Dog Walks</span>
+            <span class="pill">Daycare Fun</span>
+            <span class="pill">Social Media Marketing</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-card reveal" id="social">
+          <h2>Follow the fictional brand</h2>
+          <p>
+            A real business might use social platforms to share dog photos, customer reviews, short videos, promotions and updates from daily walks.
+          </p>
+
+          <div class="socials">
+            <a class="social-link" href="https://site.com/@dogwalker" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-facebook-f"></i>
+              <span>Facebook</span>
+            </a>
+
+            <a class="social-link" href="https://site.com/@dogwalker" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+
+            <a class="social-link" href="https://site.com/@dogwalker" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-tiktok"></i>
+              <span>TikTok</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-card reveal" id="project">
+          <h2>Important project note</h2>
+          <p>
+            This website does not advertise a real company.
+          </p>
+          <p>
+            It has been created purely as a <strong>BTEC I.T. project on Using Social Media in Business</strong>. The aim is to demonstrate how a company could present itself online, use a clear marketing message, and connect visitors to social media platforms.
+          </p>
+          <p>
+            The business name, service description and links on this page are all part of a classroom-style example.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Adam's Dog Daycare - Exeter themed demo page for a BTEC I.T. social media in business project.</p>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      revealItems.forEach((item) => {
+        const itemTop = item.getBoundingClientRect().top;
+        const triggerPoint = window.innerHeight - 80;
+
+        if (itemTop < triggerPoint) {
+          item.classList.add('show');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>
